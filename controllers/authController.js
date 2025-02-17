@@ -23,7 +23,7 @@ const register  = async (req, res) => {
 
 
         // Create the user 
-        const userId = await User.create({ username, email, password: hashedPassword, role });
+        const user = await User.create({ username, email, password: hashedPassword, role });
 
         const token = jsonwebtoken.sign({ id: user[0].id, role: user[0].role }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
